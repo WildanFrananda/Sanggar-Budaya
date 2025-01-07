@@ -22,7 +22,12 @@ class AuthLogo extends StatelessWidget {
         ],
       ),
       child: Center(
-        child: Expanded(child: Image.asset(image)),
+        child: Image.asset(
+          image,
+          fit: BoxFit.contain,
+          width: 60,
+          height: 60,
+        ),
       ),
     );
   }

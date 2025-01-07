@@ -1,18 +1,21 @@
 class Resources {
-  static Map<String, String> imgAsset = {};
+  // Begin Screen Strings
+  static const String beginTitle = 'Sanggar Bale Bambu';
+  static const String beginDesc =
+      'Pusat Kebudayaan Betawi Sanggar Bale Bambu, Destinasi Budaya Terbaik!';
 
-  static Map<String, String> homeString = {
-    'popUpTitle': 'Hello, Wildan!',
-    'popUpDesc1': 'Selamat datang di Sanggar Bale Bambu',
-    'popUpDesc2': 'Apa yang kamu cari di dalam',
-    'popUpDesc3': 'Aplikasi Kami?',
-    'popUpDesc4': 'Semua layanan kami',
-    'popUpDesc5': 'bertemakan Budaya Betawi',
-    'TextFieldLabel': 'Cari disini',
-    'sanggarBudaya': 'Mengenal Kebudayaan Betawi',
-    'sanggarSejarah': 'Mengenal Sejarah Betawi',
-    'adatTitle': 'ADAT ISTIADAT',
-    'adatDesc': 'Berikut adalah Kebudayaan terbaik untuk kamu',
-    'adatLink': 'Selengkapnya'
-  };
+  // Home Screen Strings
+  static const String homePopUpTitle = 'Hello, Wildan!';
+  static const String homePopUpDesc1 = 'Selamat datang di Sanggar Bale Bambu';
+  static const String homePopUpDesc2 = 'Apa yang kamu cari di dalam';
+  static const String homePopUpDesc3 = 'Aplikasi Kami?';
+  static const String homePopUpDesc4 = 'Semua layanan kami';
+  static const String homePopUpDesc5 = 'bertemakan Budaya Betawi';
+  static const String homeTextFieldLabel = 'Cari disini';
+  static const String homeSanggarBudaya = 'Mengenal Kebudayaan Betawi';
+  static const String homeSanggarSejarah = 'Mengenal Sejarah Betawi';
+  static const String homeAdatTitle = 'ADAT ISTIADAT';
+  static const String homeAdatDesc =
+      'Berikut adalah Kebudayaan terbaik untuk kamu';
+  static const String homeAdatLink = 'Selengkapnya';
 }

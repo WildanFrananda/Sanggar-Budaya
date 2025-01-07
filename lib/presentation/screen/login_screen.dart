@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:sanggar_budaya/presentation/screen/home_screen.dart';
 import 'package:sanggar_budaya/presentation/screen/sign_up_screen.dart';
 import 'package:sanggar_budaya/presentation/widgets/auth_logo.dart';
 
@@ -9,11 +10,10 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          onPressed: () => Navigator.pop(context),
           icon: const Icon(
             Icons.arrow_back_ios_new,
             color: Colors.grey,
@@ -38,6 +38,7 @@ class LoginScreen extends StatelessWidget {
             children: <Widget>[
               const TextField(
                 style: TextStyle(color: Colors.black),
+                textInputAction: TextInputAction.next,
                 decoration: InputDecoration(
                   labelText: 'Email',
                   labelStyle: TextStyle(color: Colors.black),
@@ -46,8 +47,6 @@ class LoginScreen extends StatelessWidget {
                       color: Colors.grey,
                     ),
                   ),
-                  filled: true,
-                  fillColor: Color(0xFFD9D9D9),
                 ),
               ),
               const SizedBox(height: 50),
@@ -61,8 +60,6 @@ class LoginScreen extends StatelessWidget {
                       color: Colors.grey,
                     ),
                   ),
-                  filled: true,
-                  fillColor: Color(0xFFD9D9D9),
                 ),
               ),
               const SizedBox(height: 80),
@@ -75,9 +72,12 @@ class LoginScreen extends StatelessWidget {
                   ),
                   shadowColor: Colors.grey.withOpacity(0.5),
                 ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const HomeScreen(),
+                  ),
+                ),
                 child: const Center(
                   child: Text(
                     'Sign In',

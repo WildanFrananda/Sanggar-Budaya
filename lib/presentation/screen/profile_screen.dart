@@ -1,24 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:sanggar_budaya/presentation/screen/edit_profile_screen.dart';
+import 'package:sanggar_budaya/presentation/widgets/adat_grid.dart';
 import 'package:sanggar_budaya/presentation/widgets/sanggar_bottom_navigation.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: const Icon(Icons.arrow_back_ios_new),
-        ),
-      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(10),
             child: Column(
               children: [
+                Row(
+                  children: [
+                    IconButton(
+                      onPressed: () => Navigator.pop(context),
+                      icon: const Icon(Icons.arrow_back_ios_new),
+                    ),
+                  ],
+                ),
                 Center(
                   child: Column(
                     children: [
@@ -113,7 +137,15 @@ class ProfileScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const EditProfileScreen(),
+                                ),
+                              );
+                            },
                             child: const Text(
                               'Edit Profile',
                               style: TextStyle(color: Colors.white),
@@ -135,6 +167,26 @@ class ProfileScreen extends StatelessWidget {
                           ),
                         ],
                       ),
+                    ],
+                  ),
+                ),
+                TabBar(
+                  labelColor: Theme.of(context).primaryColor,
+                  indicatorColor: Theme.of(context).primaryColor,
+                  controller: _tabController,
+                  tabs: <Widget>[
+                    Tab(child: Text('Photos')),
+                    Tab(child: Text('Likes')),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.4,
+                  child: TabBarView(
+                    controller: _tabController,
+                    children: [
+                      AdatGrid(),
+                      AdatGrid(),
                     ],
                   ),
                 ),

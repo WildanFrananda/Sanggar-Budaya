@@ -16,6 +16,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final _searchTextController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -38,34 +40,34 @@ class _HomeScreenState extends State<HomeScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text(
-          Resources.homeString['popUpTitle']!,
-          style: const TextStyle(
+        title: const Text(
+          Resources.homePopUpTitle,
+          style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
         ),
-        content: SizedBox(
+        content: const SizedBox(
           height: 150,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(Resources.homeString['popUpDesc1']!),
-              const SizedBox(height: 20),
+              Text(Resources.homePopUpDesc1),
+              SizedBox(height: 20),
               Text(
-                Resources.homeString['popUpDesc2']!,
-                style: const TextStyle(fontWeight: FontWeight.bold),
+                Resources.homePopUpDesc2,
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
               Text(
-                Resources.homeString['popUpDesc3']!,
-                style: const TextStyle(fontWeight: FontWeight.bold),
+                Resources.homePopUpDesc3,
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
               Text(
-                Resources.homeString['popUpDesc4']!,
-                style: const TextStyle(fontWeight: FontWeight.bold),
+                Resources.homePopUpDesc4,
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
               Text(
-                Resources.homeString['popUpDesc5']!,
-                style: const TextStyle(fontWeight: FontWeight.bold),
+                Resources.homePopUpDesc5,
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ],
           ),
@@ -90,6 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           child: Column(
             children: <Widget>[
               const SizedBox(height: 12),
@@ -98,26 +101,34 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   children: [
                     Expanded(
-                      child: TextField(
-                        style: const TextStyle(color: Colors.white),
-                        decoration: InputDecoration(
-                          labelText: Resources.homeString['TextFieldLabel']!,
-                          labelStyle: const TextStyle(color: Colors.white),
-                          border: const OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
+                      child: GestureDetector(
+                        onTap: () {
+                          FocusScope.of(context).unfocus();
+                        },
+                        child: TextField(
+                          controller: _searchTextController,
+                          keyboardType: TextInputType.text,
+                          textCapitalization: TextCapitalization.words,
+                          style: const TextStyle(color: Colors.white),
+                          decoration: const InputDecoration(
+                            labelText: Resources.homeTextFieldLabel,
+                            labelStyle: TextStyle(color: Colors.white),
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                              ),
                             ),
-                          ),
-                          prefixIcon: const Icon(
-                            Icons.search,
-                            color: Colors.white,
-                          ),
-                          hoverColor: Colors.yellow,
-                          filled: true,
-                          fillColor: Colors.black,
-                          suffixIcon: const Icon(
-                            Icons.filter_alt,
-                            color: Colors.white,
+                            prefixIcon: Icon(
+                              Icons.search,
+                              color: Colors.white,
+                            ),
+                            hoverColor: Colors.yellow,
+                            filled: true,
+                            fillColor: Colors.black,
+                            suffixIcon: Icon(
+                              Icons.filter_alt,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),
@@ -170,8 +181,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
                         viewModel.goToDetailScreen(context, budayaDetail);
                       },
-                      child: SanggarCard(
-                        title: Resources.homeString['sanggarBudaya']!,
+                      child: const SanggarCard(
+                        title: Resources.homeSanggarBudaya,
                         imgUrl: 'assets/budayabetawi.png',
                       ),
                     ),
@@ -180,8 +191,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: () {
                         viewModel.goToAboutScreen(context);
                       },
-                      child: SanggarCard(
-                        title: Resources.homeString['sanggarSejarah']!,
+                      child: const SanggarCard(
+                        title: Resources.homeSanggarSejarah,
                         imgUrl: 'assets/sejarah.png',
                       ),
                     ),
@@ -189,22 +200,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Expanded(
+                        const Expanded(
                           flex: 3,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                Resources.homeString['adatTitle']!,
-                                style: const TextStyle(
+                                Resources.homeAdatTitle,
+                                style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
                                 ),
                               ),
-                              const SizedBox(height: 2),
+                              SizedBox(height: 2),
                               Text(
-                                Resources.homeString['adatDesc']!,
-                                style: const TextStyle(fontSize: 10),
+                                Resources.homeAdatDesc,
+                                style: TextStyle(fontSize: 10),
                               ),
                             ],
                           ),
@@ -212,7 +223,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         InkWell(
                           onTap: () {},
                           child: Text(
-                            Resources.homeString['adatLink']!,
+                            Resources.homeAdatLink,
                             style: TextStyle(
                               color: Theme.of(context).primaryColor,
                             ),

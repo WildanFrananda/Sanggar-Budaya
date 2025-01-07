@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:sanggar_budaya/presentation/screen/home_screen.dart';
+import 'package:flutter/services.dart';
+import 'package:sanggar_budaya/presentation/screen/begin_screen.dart';
 
 void main() {
-  runApp(const SanggarBudayaApp());
+  WidgetsFlutterBinding.ensureInitialized();
+
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]).then((_) => runApp(const SanggarBudayaApp()));
 }
 
 class SanggarBudayaApp extends StatelessWidget {
@@ -17,7 +23,7 @@ class SanggarBudayaApp extends StatelessWidget {
         primaryColor: const Color(0xFFFFC107),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      home: const BeginScreen(),
     );
   }
 }

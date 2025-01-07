@@ -38,15 +38,11 @@ class DetailScreen extends StatelessWidget {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      style: ButtonStyle(
-                        backgroundColor: WidgetStateProperty.all(Colors.white),
-                        shadowColor: WidgetStateProperty.all(
-                          Colors.grey.withOpacity(0.5),
-                        ),
-                        shape: WidgetStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
+                      style: IconButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        shadowColor: Colors.grey.withOpacity(0.5),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
                         ),
                       ),
                       icon: const Icon(
